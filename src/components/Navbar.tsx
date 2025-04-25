@@ -1,32 +1,63 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 export default function Navbar() {
   const path = usePathname()
-  
+  const [open, setOpen] =useState(false)
+  const navElement = (pathName:string, name:string):React.JSX.Element => {
+    return <>
+     <Link className={` px-2 py-1 ${path==pathName && 'border bg-[#0c2a53] rounded-md font-semibold'}`} href={pathName}><li>{name}</li></Link>
+    </>
+  }
+  const authElement = (pathName:string, name:string):React.JSX.Element => {
+    return <>
+      <Link className={`px-2 py-1 border hover:bg-[#6e7b96] hover:text-black duration-700 ${path==pathName && ' bg-[#0c2a53] rounded-md font-semibold'}`} href={pathName}>{name}</Link>
+    </>
+  }
   return (
-      <nav className='  bg-[#161B22] py-2'>
+      <nav className='  bg-[#161B22] py-2 px-2 xl:px-0'>
           <div className=' container mx-auto flex items-center justify-between'>
               
-            <div className='flex items-center gap-2'>
-                <Image
-                    src={'/images/cloths.png'}
-                    alt='This is a  cloth store logo'
-                    width={50}
-                    height={50}
-                />
-                <h4 className='font-semibold'>FashionEra</h4>
-            </div>
-            <ul className='flex gap-5 font-medium items-center'>
-                <Link className={` px-2 py-1 ${path=='/' && 'border bg-[#0c2a53] rounded-md font-semibold'}`} href='/'><li>Home</li></Link>
-                <Link className={` px-2 py-1 ${path=='/products' && 'border bg-[#0c2a53] rounded-md font-semibold'}`} href='/products'><li>Product</li></Link>
-                <Link className={` px-2 py-1 ${path=='/about' && 'border bg-[#0c2a53] rounded-md font-semibold'}`} href='/about'><li>About</li></Link>
-              <Link className={`px-2 py-1 border hover:bg-[#6e7b96] hover:text-black duration-700 ${path=='/signIn' && ' bg-[#0c2a53] rounded-md font-semibold'}`} href='/signIn'>Sign In</Link>
-              <Link className={` px-2 py-1 border  hover:bg-[#6e7b96] hover:text-black duration-700 ${path=='/signUp' && ' bg-[#0c2a53] rounded-md font-semibold'}`} href='/signUp'>Register</Link>
-            </ul>
-              
+            <div className=' flex items-center gap-2'>
+                <div onClick={()=>setOpen(!open)} className={`md:hidden flex`}>
+                  {
+                    open?
+                  
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                      </svg>
+                        :
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                      </svg>
+                    
+                  }
+                  <ul  className={`absolute top-14 left-0 flex flex-col gap-4 bg-[#161B22] text-white w-1/2 pl-2 py-1 duration-700 ease-linear ${open?'left-0':'left-[-600px]'}`} >
+                  {navElement('/','Home')}
+                  {navElement('/products','Product')}
+                  {navElement('/about','About')}
+                  {authElement('/signIn', 'SignIn')}
+                  {authElement('/signUp', 'Register')}
+              </ul>  
+                     
+                  </div>
+                  <Image
+                      src={'/images/cloths.png'}
+                      alt='This is a  cloth store logo'
+                      width={50}
+                      height={50}
+                  />
+                  <h4 className='font-semibold'>FashionEra</h4>
+              </div>
+              <ul className='hidden md:flex gap-5 font-medium items-center'>
+                  {navElement('/','Home')}
+                  {navElement('/products','Product')}
+                  {navElement('/about','About')}
+                  {authElement('/signIn', 'SignIn')}
+                  {authElement('/signUp', 'Register')}
+              </ul>
          </div>
    </nav>
   )
