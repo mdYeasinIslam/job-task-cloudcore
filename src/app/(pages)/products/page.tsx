@@ -1,16 +1,11 @@
 import { ProductType } from '@/types/Type'
-import axios from 'axios'
 import React from 'react'
-import ProductDetails from './ProductDetails'
-
-export const fetchProducts =async () => {
-  const res = await axios.get('https://admin.refabry.com/api/all/product/get')
-  return res.data
-}
+import ProductDetails from '../../../components/ProductDetails'
+import { useFetchProducts } from '@/hooks/useFetchProducts'
 
 export default async function Products() {
-  const data =await fetchProducts()
-  const products = data?.data?.data as ProductType[]
+  // const data =await fetchProducts()
+  const products =await useFetchProducts() as ProductType[]
   return (
     <section className='space-y-5'>
        <div className="text-center py-10 px-4 bg-white dark:bg-gray-900">

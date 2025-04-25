@@ -1,5 +1,6 @@
 import { ProductType } from '@/types/Type'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 interface Props {
@@ -7,7 +8,6 @@ interface Props {
 }
 
 export default function ProductDetails({ product }:Props) {
-  console.log(product)
   const img =`https://admin.refabry.com/storage/product/${product?.image}`
   return (
     <>
@@ -27,9 +27,11 @@ export default function ProductDetails({ product }:Props) {
 
           {/* Hidden content that appears on hover */}
           <div className="opacity-0 mt-2 transition-opacity duration-500 group-hover:opacity-100">
-            <p className="text-xs">{ }</p>
+            <p className="text-xs">• Windproof & warm</p>
             <p className="text-xs">• Available in all sizes</p>
-            <button className="mt-2 px-3 py-1 bg-red-600 rounded text-sm hover:bg-red-700">Buy Now</button>
+            <Link href={`/products/${product?.id}`}>
+               <button className="mt-2 px-3 py-1 bg-red-600 rounded text-sm hover:bg-red-700">View Details</button>
+            </Link>
           </div>
         </div>
 </div>
