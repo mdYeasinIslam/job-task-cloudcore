@@ -7,21 +7,33 @@ interface Props {
 }
 
 export default function ProductDetails({ product }:Props) {
-    console.log(product)
+  console.log(product)
+  const img =`https://admin.refabry.com/storage/product/${product?.image}`
   return (
-    <div className='border bg-[#161B22] relative'>
-      <figure className=' mx-auto h-88     rounded-xl'>
-            <img
-             src={`https://admin.refabry.com/storage/product/${product?.image}`} 
-            alt="This is product image" 
-            className='w-full h-full brightness-50'
-            />
-             
-      </figure>
-      <div className='absolute top-0 '>
+    <>
+      
+      <div className="group w-full relative overflow-hidden rounded-lg shadow-lg bg-black text-white cursor-pointer">
+        <Image
+       src={`https://admin.refabry.com/storage/product/${product?.image}`} 
+        alt=" Winter Jacket"
+          width={250}
+          height={100}
+        className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-80"
+      />
+        {/* Overlay container */}
+        <div className="absolute bottom-0 w-full bg-gradient-to-t from-black to-transparent p-4 transition-all duration-500 group-hover:bottom-1/2 group-hover:translate-y-1/2">
+          <h3 className="text-lg font-semibold">Premium Winter Jacket</h3>
+          <p className="text-sm">1499 BDT.</p>
 
-          <h2>{ product.name}</h2>
-      </div>
-    </div>
+          {/* Hidden content that appears on hover */}
+          <div className="opacity-0 mt-2 transition-opacity duration-500 group-hover:opacity-100">
+            <p className="text-xs">{ }</p>
+            <p className="text-xs">• Available in all sizes</p>
+            <button className="mt-2 px-3 py-1 bg-red-600 rounded text-sm hover:bg-red-700">Buy Now</button>
+          </div>
+        </div>
+</div>
+
+    </>
   )
 }
