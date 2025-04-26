@@ -1,7 +1,25 @@
+'use client'
+import { useAuth } from '@/context/AuthContext'
+import { UserCredential } from 'firebase/auth'
 import Image from 'next/image'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
+type ContextType= {
+  googleAuth: () => Promise<UserCredential>
+  user:any
+}
+
 export default function SignIn() {
+  const {user, googleAuth } = (useAuth() as any) as ContextType
+  const handleAuth = () => {
+    googleAuth()
+      .then(() => {
+        redirect('/')
+      })
+      .catch(e=>console.error(e))
+  }
+  console.log(user)
   return (
     <section className='container mx-auto flex items-center mt-10 h-full'>
       <div className='w-1/2 flex justify-center'>
@@ -15,7 +33,7 @@ export default function SignIn() {
       </div>
       <div className='border bg-[#1d242e] h-1/2 p-10 text-center place-content-center place-items-center space-y-5'>
             <h1 className='text-4xl font-semibold'>Log In you account...</h1>
-          <button className='border  px-3 py-1 flex items-center gap-4 bg-[#0b3d1a] text-white font-semibold rounded-md cursor-pointer'>
+          <button onClick={handleAuth} className='border px-3 py-1 flex items-center gap-4 bg-[#0b3d1a] text-white font-semibold rounded-md cursor-pointer '>
           <img className='w-10 h-10' src="/images/google.png" alt="" />  
          <span> Sign-In with Google</span></button>
       </div>

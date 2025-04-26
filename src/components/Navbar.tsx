@@ -3,11 +3,26 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useAuth } from '@/context/AuthContext'
+import { User } from 'firebase/auth'
+
+type ContextType = {
+  signOutAuth: () => Promise<void>
+  user: User
+}
 
 export default function Navbar() {
+  const {user, signOutAuth } = (useAuth() as any) as ContextType
   const path = usePathname()
   const [open, setOpen] = useState(false)
-  
+  console.log(user)
+
+  const handleSignOut = () => {
+    signOutAuth()
+      .then(() => {
+      
+    }).catch(e=>console.error(e))
+  }
   const navElement = (pathName:string, name:string):React.JSX.Element => {
     return <>
      <Link className={` px-2 py-1 ${path==pathName && 'border bg-[#0c2a53] rounded-md font-semibold'}`} href={pathName}><li>{name}</li></Link>
@@ -40,8 +55,14 @@ export default function Navbar() {
                   {navElement('/','Home')}
                   {navElement('/products','Product')}
                   {navElement('/about','About')}
-                  {authElement('/signIn', 'SignIn')}
-                  {authElement('/signUp', 'Register')}
+                 {
+                    !user ?
+                      <>
+                      {authElement('/signIn', 'SignIn')}
+                      </>
+                      :
+                      <button onClick={handleSignOut} className={`px-2 py-1 border hover:text-black hover:bg-[#777cbe]  duration-700 cursor-pointer`} >Sign-Out</button>
+                  }
               </ul>  
                      
                   </div>
@@ -57,8 +78,15 @@ export default function Navbar() {
                   {navElement('/','Home')}
                   {navElement('/products','Product')}
                   {navElement('/about','About')}
-                  {authElement('/signIn', 'SignIn')}
-                  {authElement('/signUp', 'Register')}
+                  {
+                    !user ?
+                      <>
+                      {authElement('/signIn', 'SignIn')}
+                      </>
+                      :
+                      <button onClick={handleSignOut} className={`px-2 py-1 border hover:text-black hover:bg-[#777cbe]  duration-700 cursor-pointer`} >Sign-Out</button>
+                  }
+                 
               </ul>
          </div>
    </nav>
