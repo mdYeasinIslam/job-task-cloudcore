@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 export default function Navbar() {
   const path = usePathname()
   const [open, setOpen] = useState(false)
-  console.log(path)
+  
   const navElement = (pathName:string, name:string):React.JSX.Element => {
     return <>
      <Link className={` px-2 py-1 ${path==pathName && 'border bg-[#0c2a53] rounded-md font-semibold'}`} href={pathName}><li>{name}</li></Link>
