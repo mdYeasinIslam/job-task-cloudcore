@@ -3,9 +3,11 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+
 export default function Navbar() {
   const path = usePathname()
-  const [open, setOpen] =useState(false)
+  const [open, setOpen] = useState(false)
+  console.log(path)
   const navElement = (pathName:string, name:string):React.JSX.Element => {
     return <>
      <Link className={` px-2 py-1 ${path==pathName && 'border bg-[#0c2a53] rounded-md font-semibold'}`} href={pathName}><li>{name}</li></Link>
@@ -17,8 +19,8 @@ export default function Navbar() {
     </>
   }
   return (
-      <nav className='  bg-[#161B22] py-2 px-2 xl:px-0'>
-          <div className=' container mx-auto flex items-center justify-between'>
+      <nav className='  bg-[#161B22] py-2 px-2 xl:px-5'>
+          <div className='  flex items-center justify-between'>
               
             <div className=' flex items-center gap-2'>
                 <div onClick={()=>setOpen(!open)} className={`md:hidden flex`}>
@@ -34,7 +36,7 @@ export default function Navbar() {
                       </svg>
                     
                   }
-                  <ul  className={`absolute top-14 left-0 flex flex-col gap-4 bg-[#161B22] text-white w-1/2 pl-2 py-1 duration-700 ease-linear ${open?'left-0':'left-[-600px]'}`} >
+                  <ul onClick={()=>setOpen(false)} className={`absolute top-14 left-0 flex flex-col gap-4 bg-[#161B22] text-white w-1/2 pl-2 py-1 duration-700 ease-linear ${open?'left-0':'left-[-600px]'}`} >
                   {navElement('/','Home')}
                   {navElement('/products','Product')}
                   {navElement('/about','About')}

@@ -26,7 +26,7 @@ export default function ProductDetails({ product }:Props) {
           <p className="text-sm">1499 BDT.</p>
 
           {/* Hidden content that appears on hover */}
-          <div className="opacity-0 mt-2 transition-opacity duration-500 group-hover:opacity-100">
+          <div className="md:opacity-0 mt-2 transition-opacity duration-500 group-hover:opacity-100">
             <p className="text-xs">• Windproof & warm</p>
             <p className="text-xs">• Available in all sizes</p>
             <Link href={`/products/${product?.id}`}>
