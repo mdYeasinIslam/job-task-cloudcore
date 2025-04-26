@@ -4,6 +4,7 @@ import { UserCredential } from 'firebase/auth'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import React from 'react'
+import toast from 'react-hot-toast'
 
 type ContextType= {
   googleAuth: () => Promise<UserCredential>
@@ -15,9 +16,14 @@ export default function SignIn() {
   const handleAuth = () => {
     googleAuth()
       .then(() => {
+        toast.success('Successfully sign-In!');
         redirect('/')
+
       })
-      .catch(e=>console.error(e))
+      .catch(e => {
+        toast.error(e.message);
+        console.error(e)
+      })
   }
   console.log(user)
   return (

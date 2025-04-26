@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useAuth } from '@/context/AuthContext'
 import { User } from 'firebase/auth'
+import toast from 'react-hot-toast'
 
 type ContextType = {
   signOutAuth: () => Promise<void>
@@ -20,7 +21,8 @@ export default function Navbar() {
   const handleSignOut = () => {
     signOutAuth()
       .then(() => {
-      
+          toast.success('Successfully sign-out!');
+
     }).catch(e=>console.error(e))
   }
   const navElement = (pathName:string, name:string):React.JSX.Element => {

@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { AuthProvider } from "@/context/AuthContext";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,8 +39,11 @@ export default function RootLayout({
           <Navbar />  
             <div className="h-screen">
 
-              {children}
-            </div>
+            {children}
+            
+          </div>
+          <Toaster position="top-center" reverseOrder={false} />
+
           <Footer/>
         </AuthProvider>
       </body>
