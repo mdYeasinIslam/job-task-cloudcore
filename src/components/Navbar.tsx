@@ -35,9 +35,9 @@ export default function Navbar() {
     </>
   }
   return (
-      <nav className='  bg-[#161B22] py-2 px-2 xl:px-5'>
+      <nav className='  bg-[#161B22] text-white py-2 px-2 xl:px-5'>
           <div className='  flex items-center justify-between'>
-              
+               
             <div className=' flex items-center gap-2'>
                 <div onClick={()=>setOpen(!open)} className={`md:hidden flex`}>
                   {
@@ -75,7 +75,7 @@ export default function Navbar() {
                   />
                   <h4 className='font-semibold'>FashionEra</h4>
               </div>
-              <ul className='hidden md:flex gap-5 font-medium items-center'>
+              <ul className='hidden md:flex text-white gap-5 font-medium items-center'>
                   {navElement('/','Home')}
                   {navElement('/products','Product')}
                   {navElement('/about','About')}
