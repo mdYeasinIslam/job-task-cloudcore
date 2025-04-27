@@ -1,5 +1,6 @@
 // pages/about.tsx
 
+import Link from "next/link";
 import React from "react";
 
 export default function About() {
@@ -19,7 +20,7 @@ export default function About() {
         <p className=" leading-relaxed">
           Fashion Era was born out of a passion for two things: <strong>fashion</strong> and <strong>functionality</strong>. 
           We noticed a gap — too often, winter clothing meant sacrificing style for warmth, or vice versa. 
-          We decided to change that. Since our first collection, we've been committed to creating beautiful, durable, 
+          We decided to change that. Since our first collection, we have been committed to creating beautiful, durable, 
           and innovative winterwear that celebrates individuality and empowers confidence, no matter the temperature.
         </p>
       </section>
@@ -52,14 +53,14 @@ export default function About() {
         <p className=" leading-relaxed mb-8">
           Be bold. Be beautiful. <strong>Own your winter style.</strong> 
           <br />
-          Thank you for being a part of Fashion Era. Together, let’s make this winter unforgettable! ❄️❤️
+          Thank you for being a part of Fashion Era. Together, lets make this winter unforgettable! ❄️❤️
         </p>
-        <a
+        <Link
           href="/"
           className="inline-block bg-blue-700 hover:bg-blue-900 text-white font-semibold py-3 px-6 rounded-full transition"
         >
           Explore Our Collection
-        </a>
+        </Link>
       </section>
     </div>
   );

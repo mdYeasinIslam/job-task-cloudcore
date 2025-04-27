@@ -1,11 +1,24 @@
-import React from 'react'
-import { useFetchProducts } from '@/hooks/useFetchProducts'
+'use client'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { ProductType } from '@/types/Type'
+import axios from 'axios'
+import { useParams } from 'next/navigation'
 
-export default async function page({ params }: {params: Promise<{ id: string }>}){
-    const { id } = await params
-    const products = await useFetchProducts()
-    const findProduct= products.find(product=>product.id===parseInt(id))
+export default function SingleProduct() {
+    const { id } = useParams();
+
+    const [products, setProducts] = useState<ProductType[] | []>([])
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await axios.get('https://admin.refabry.com/api/all/product/get')
+            const productsData = res?.data?.data?.data || [];
+            setProducts(productsData)
+        }
+        fetchData()
+    },[])
+    const findProduct = products.find((product: ProductType) => product.id === parseInt(Array.isArray(id) ? id[0] : id ?? '0'));
   return (
     <section className='h-full w-full'>
         <div className="max-w-6xl mx-auto mt-10 p-5 bg-white dark:bg-gray-900 rounded-2xl shadow-lg flex flex-col md:flex-row gap-8">

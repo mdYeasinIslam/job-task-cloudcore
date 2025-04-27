@@ -1,10 +1,12 @@
-import { ProductType } from '@/types/Type'
+'use client'
 import React from 'react'
 import ProductDetails from '../../../components/ProductDetails'
 import { useFetchProducts } from '@/hooks/useFetchProducts'
+import { ProductType } from '@/types/Type'
 
-export default async function Products() {
-  const products =await useFetchProducts() as ProductType[]
+export default  function Products() {
+  const {products} = useFetchProducts()
+ 
   return (
        <section className='space-y-5 '>
           <div className="text-center py-10 px-4 bg-white dark:bg-gray-900">
@@ -18,7 +20,7 @@ export default async function Products() {
         </div>
           <div className='container mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-5 gap-5 px-5'>
             {
-              products?.map(product => <ProductDetails key={product.id} product={product} />)
+              products?.map((product:ProductType) => <ProductDetails key={product.id} product={product} />)
             }
           </div>
       </section>

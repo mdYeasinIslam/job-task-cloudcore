@@ -13,7 +13,7 @@ type ContextType = {
 }
 
 export default function Navbar() {
-  const {user, signOutAuth } = (useAuth() as any) as ContextType
+  const {user, signOutAuth } = (useAuth() as unknown) as ContextType
   const path = usePathname()
   const [open, setOpen] = useState(false)
   

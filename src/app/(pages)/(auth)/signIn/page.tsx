@@ -2,7 +2,7 @@
 import { useAuth } from '@/context/AuthContext'
 import { UserCredential } from 'firebase/auth'
 import Image from 'next/image'
-import { redirect, useRouter } from 'next/navigation'
+import {  useRouter } from 'next/navigation'
 import React from 'react'
 import toast from 'react-hot-toast'
 
@@ -11,13 +11,12 @@ type ContextType= {
 }
 
 export default function SignIn() {
-  const { googleAuth } = (useAuth() as any) as ContextType
+  const { googleAuth } = (useAuth() as unknown) as ContextType
   const router = useRouter()
   const handleAuth = () => {
     googleAuth()
       .then(() => {
         toast.success('Successfully sign-In!');
-        // redirect('/')
         router.push('/')
       })
       .catch(e => {
@@ -39,7 +38,12 @@ export default function SignIn() {
       <div className=' border bg-[#1d242e] md:h-1/2 p-10 text-center place-content-center place-items-center space-y-5 rounded-md'>
             <h1 className='text-4xl font-semibold'>Log In you account...</h1>
           <button onClick={handleAuth} className='border px-3 py-1 flex items-center gap-4 bg-[#0b3d1a] text-white font-semibold rounded-md cursor-pointer '>
-          <img className='w-7 h-7 md:w-10 md:h-10' src="/images/google.png" alt="" />  
+          <Image
+            className='w-7 h-7 md:w-10 md:h-10'
+            src="/images/google.png"
+            width={500}
+            height={500}
+            alt="" />  
          <span> Sign-In with Google</span></button>
       </div>
     </section>

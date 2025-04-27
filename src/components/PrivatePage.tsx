@@ -14,7 +14,7 @@ type ContextType = {
 }
 
 export default function PrivatePage({ children }: ProtectedPageProps): JSX.Element | null {
-    const { user, loading } = (useAuth() as any) as ContextType
+    const { user, loading } = (useAuth() as unknown) as ContextType
    
     
     
