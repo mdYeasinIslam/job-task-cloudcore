@@ -4,10 +4,11 @@ import Image from 'next/image'
 import { ProductType } from '@/types/Type'
 import axios from 'axios'
 import { useParams } from 'next/navigation'
+import Link from 'next/link'
 
 export default function SingleProduct() {
     const { id } = useParams();
-
+    console.log(id)
     const [products, setProducts] = useState<ProductType[] | []>([])
     
     useEffect(() => {
@@ -42,9 +43,11 @@ export default function SingleProduct() {
             <p className="text-2xl font-semibold text-red-500 mb-6">
             {findProduct?.price} BDT.
             </p>
-            <button className="px-6 py-3 bg-gradient-to-r from-red-500 to-black text-white rounded-full font-semibold hover:scale-105 transition-transform duration-300">
+            <Link href={`/placeOrder/${id}`}>
+                       <button className="cursor-pointer px-6 py-3 bg-gradient-to-r from-red-500 to-black text-white rounded-full font-semibold hover:scale-105 transition-transform duration-300">
             Buy Now
             </button>
+                  </Link>
         </div>
 
         {/* Right Side - findProduct Image */}

@@ -28,8 +28,8 @@ export default function ProductDetails({ product }:Props) {
           <div className="md:opacity-0 mt-2 transition-opacity duration-500 group-hover:opacity-100">
             <p className="text-xs">• Windproof & warm</p>
             <p className="text-xs">• Available in all sizes</p>
-            <Link className='cursor-pointer' href={`/products/${product?.id}`}>
-               <button className="mt-2 px-3 py-1 bg-red-600 rounded text-sm hover:bg-red-700">View Details</button>
+            <Link href={`/products/${product?.id}`}>
+               <button className="cursor-pointer mt-2 px-3 py-1 bg-red-600 rounded text-sm hover:bg-red-700">View Details</button>
             </Link>
           </div>
         </div>

@@ -1,8 +1,18 @@
 # Frontend Developer Intern Task - CloudCore
 
-## Getting Started
+## Installation & Setup
 
-First, run the development server:
+To set up this project locally, follow these steps:
+
+## 1. Clone the Repository
+```bash```
+git clone https://github.com/mdYeasinIslam/job-task-cloudcore.git
+
+## 2. Check or Install npm packages:
+```bash 
+npm install
+
+then run the development server:
 
 ```bash
 npm run dev
@@ -14,7 +24,7 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [https://fashion-era-cloudcore.vercel.app/](https://fashion-era-cloudcore.vercel.app/) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
@@ -22,7 +32,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 
 ## Task Overview
-This project is a responsive web application that fetches product data from an API using Axios in **React.js**. The application displays a list of products and allows users to view a single product's details on a dynamic route.
+This project is a responsive web application that fetches product data from an API using Axios in **Next.js**. The application displays a list of products and allows users to view a single product's details on a dynamic route.
 
 ### Requirements:
 - **Task 1**: Build a responsive UI to display products fetched from the API.
@@ -43,10 +53,4 @@ This project is a responsive web application that fetches product data from an A
   The images of the products are fetched from:  
   `https://admin.refabry.com/storage/product/{product_id}.webp`
 
-## Installation & Setup
 
-To set up this project locally, follow these steps:
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/frontend-intern-task.git
