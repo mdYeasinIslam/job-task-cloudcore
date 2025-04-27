@@ -26,7 +26,7 @@ export default function SignIn() {
       })
   }
   return (
-    <section className='container mx-auto flex items-center mt-10 h-full'>
+    <section className='container mx-auto flex flex-col md:flex-row items-center mt-10 h-full gap-5 px-5 lg:px-0'>
       <div className='w-1/2 flex justify-center'>
         <Image
           src='/images/signUp1.svg'
@@ -36,10 +36,10 @@ export default function SignIn() {
           className=' '
         />
       </div>
-      <div className='border bg-[#1d242e] h-1/2 p-10 text-center place-content-center place-items-center space-y-5'>
+      <div className=' border bg-[#1d242e] md:h-1/2 p-10 text-center place-content-center place-items-center space-y-5 rounded-md'>
             <h1 className='text-4xl font-semibold'>Log In you account...</h1>
           <button onClick={handleAuth} className='border px-3 py-1 flex items-center gap-4 bg-[#0b3d1a] text-white font-semibold rounded-md cursor-pointer '>
-          <img className='w-10 h-10' src="/images/google.png" alt="" />  
+          <img className='w-7 h-7 md:w-10 md:h-10' src="/images/google.png" alt="" />  
          <span> Sign-In with Google</span></button>
       </div>
     </section>
