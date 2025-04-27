@@ -2,30 +2,29 @@
 import { useAuth } from '@/context/AuthContext'
 import { UserCredential } from 'firebase/auth'
 import Image from 'next/image'
-import { redirect } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import React from 'react'
 import toast from 'react-hot-toast'
 
 type ContextType= {
   googleAuth: () => Promise<UserCredential>
-  user:any
 }
 
 export default function SignIn() {
-  const {user, googleAuth } = (useAuth() as any) as ContextType
+  const { googleAuth } = (useAuth() as any) as ContextType
+  const router = useRouter()
   const handleAuth = () => {
     googleAuth()
       .then(() => {
         toast.success('Successfully sign-In!');
-        redirect('/')
-
+        // redirect('/')
+        router.push('/')
       })
       .catch(e => {
         toast.error(e.message);
         console.error(e)
       })
   }
-  console.log(user)
   return (
     <section className='container mx-auto flex items-center mt-10 h-full'>
       <div className='w-1/2 flex justify-center'>

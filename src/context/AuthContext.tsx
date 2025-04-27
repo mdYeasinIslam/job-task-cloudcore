@@ -11,6 +11,8 @@ const provider = new GoogleAuthProvider();
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true)
+
     const googleAuth =():Promise<UserCredential>=>{
         return signInWithPopup(auth, provider)
     }
@@ -19,13 +21,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         return signOut(auth)
     }
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);  
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);  
+      } else {
+        setUser(null)
+      }
+      setLoading(false)
     });
 
     return () => unsubscribe();  // Cleanup listener when unmount
   }, []);
-  const info = {user, googleAuth,signOutAuth}
+  const info = {user,loading, googleAuth,signOutAuth}
   return (
     <AuthContext.Provider value={info}>
       {children}

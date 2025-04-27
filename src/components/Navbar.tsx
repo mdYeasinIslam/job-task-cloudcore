@@ -16,8 +16,7 @@ export default function Navbar() {
   const {user, signOutAuth } = (useAuth() as any) as ContextType
   const path = usePathname()
   const [open, setOpen] = useState(false)
-  console.log(user)
-
+  
   const handleSignOut = () => {
     signOutAuth()
       .then(() => {

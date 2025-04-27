@@ -38,12 +38,9 @@ export default function RootLayout({
         <AuthProvider>
           <Navbar />  
             <div className="h-screen">
-
             {children}
-            
           </div>
           <Toaster position="top-center" reverseOrder={false} />
-
           <Footer/>
         </AuthProvider>
       </body>
