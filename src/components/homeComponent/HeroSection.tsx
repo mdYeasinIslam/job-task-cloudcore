@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function HeroSection() {
   return (
-     <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-[#0F172A] to-[#6b7da7]">
+     <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-[#0B1120] via-[#1D2671] to-[#C33764]">
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
           Welcome to Fashion Era
         </h1>

@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function AboutSection() {
   return (
-    <section className="bg-[#111827] py-20 px-6">
+    <section className="bg-gradient-to-b from-[#1E1F3D] to-[#2D2E5E] py-20 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
             About Fashion Era

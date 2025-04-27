@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function ExtraFeature() {
   return (
-    <section className="bg-[#0F172A] text-white py-16 px-6 text-center">
+    <section className="bg-[#101935] text-white py-16 px-6 text-center">
         <h2 className="text-3xl font-bold mb-4">
           Ready to Refresh Your Winter Wardrobe?
         </h2>
